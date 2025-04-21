@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Period extends Model
 {
-    //use HasFactory;
+    use HasFactory;
     use SoftDeletes;
 
     public function assistances(): HasMany
