@@ -14,13 +14,6 @@
       <form action="{{ route('user.store') }}" method="POST">
         @csrf
         <div class="card-body">
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label"><b>Usuario</b><font color="red">*</font></label>
-              <input type="text" class="form-control" id="exampleFirstName" name="username" required>
-              @error('username')
-                <div class="invalid-feedback">Muy largo.</div>
-              @enderror
-            </div>
 
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label"><b>Nombre(s)</b><font color="red">*</font></label>
@@ -47,11 +40,16 @@
             </div>
 
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label"><b>Telefono</b><font color="red">*</font></label>
-              <input type="number" class="form-control" id="exampleLastName" name="phone" required>
+              <label for="exampleFormControlInput1" class="form-label"><b>Telefono</label>
+              <input type="number" class="form-control" id="exampleLastName" name="phone">
               @error('phone')
                 <div class="invalid-feedback">Muy largo.</div>
               @enderror
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"><b>Area</font></label>
+              <input type="text" class="form-control" id="exampleLastName" name="area">
             </div>
         </div>
         <div class="card-footer py-3">

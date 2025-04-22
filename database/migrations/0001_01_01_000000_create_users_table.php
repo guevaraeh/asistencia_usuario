@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('username')->unique();
+            $table->string('phone')->nullable();
+            $table->string('area')->nullable();
             $table->boolean('is_admin')->default(0);
             $table->string('password');
             $table->string('phone', length: 50)->nullable();

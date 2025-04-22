@@ -29,14 +29,20 @@
               <label for="exampleFormControlInput1" class="form-label"><b>Apellido(s)</b><font color="red">*</font></label>
               <input type="text" class="form-control" id="exampleLastName" name="lastname" value="{{ $user->lastname }}" required>
             </div>
+
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label"><b>Correo</b><font color="red">*</font></label>
               <input type="email" class="form-control" id="exampleLastName" name="email" value="{{ $user->email }}" required>
             </div>
 
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label"><b>Telefono</b><font color="red">*</font></label>
-              <input type="number" class="form-control" id="exampleLastName" name="phone" value="{{ $user->phone }}" required>
+              <label for="exampleFormControlInput1" class="form-label"><b>Telefono</font></label>
+              <input type="number" class="form-control" id="exampleLastName" name="phone" value="{{ $user->phone }}">
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"><b>Area</font></label>
+              <input type="text" class="form-control" id="exampleLastName" name="area" value="{{ $user->area }}">
             </div>
         </div>
         <div class="card-footer py-3">

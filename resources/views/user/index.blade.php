@@ -23,24 +23,26 @@
             <table class="table table-hover" id="datat">
                 <thead>
                     <tr class="table-light">
-                        <th>Usuario</th>
                         <th>Apellidos</th>
                         <th>Nombres</th>
                         <th>Correo</th>
                         <th>Telefono</th>
+                        <th>Area</th>
                         <th>Nro. de registros de asistencia</th>
+                        <th>Usuario</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                 	@foreach($users as $user)
                     <tr>
-                        <td>{{ $user->username }}</td>
                         <td>{{ $user->lastname }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->phone }}</td>
+                        <td>{{ $user->area }}</td>
                         <td>{{ $user->is_admin ? 'Administrador' : $user->assistances->count() }}</td>
+                        <td>{{ $user->username }}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                 @if(!$user->is_admin)

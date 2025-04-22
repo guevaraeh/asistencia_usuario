@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\UserExport;
+use App\Imports\UsersImport;
 use DataTables;
 
 class UserController extends Controller
@@ -40,15 +41,16 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
-            'username' => 'required|string|lowercase|max:255|unique:'.User::class,
+            //'username' => 'required|string|lowercase|max:255|unique:'.User::class,
         ]);
 
         $user = new User;
-        $user->username = $request->input('username');
+        $user->username = 'user_'.Str::random(10);
         $user->name = $request->input('name');
         $user->lastname = $request->input('lastname');
         $user->email = $request->input('email');
         $user->phone = $request->input('phone');
+        $user->area = $request->input('area');
         $user->remember_token = Str::random(20);
 
         $password = Str::random(10);
@@ -212,6 +214,7 @@ class UserController extends Controller
         $user->lastname = $request->input('lastname');
         $user->email = $request->input('email');
         $user->phone = $request->input('phone');
+        $user->area = $request->input('area');
         $user->save();
 
         return redirect(route('user'))->with('success', 'Usuario editado');
@@ -248,6 +251,22 @@ class UserController extends Controller
             abort(403);
 
         return view('user.submitted',['user' => $user]);
+    }
+
+    public function import(Request $request) 
+    {
+        if (!Gate::allows('manage-assistance'))
+            abort(403);
+
+        //dd($request->file('file-teachers'));
+
+        $request->validate([
+            'file-teachers' => 'required|max:8192',
+        ]);
+  
+        Excel::import(new UsersImport, $request->file('file-teachers'));
+                 
+        return redirect(route('user'))->with('success', 'Docentes creados.');
     }
 
     public function export(User $user) 
