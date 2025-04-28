@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-<title>Lista de profesores</title>
+<title>Lista de Docentes</title>
 @endsection
 
 @section('content')

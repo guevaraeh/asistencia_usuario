@@ -220,6 +220,22 @@ class UserController extends Controller
         return redirect(route('user'))->with('success', 'Usuario editado');
     }
 
+    public function update_password(Request $request, User $user)
+    {
+        if (!Gate::allows('manage-assistance'))
+            abort(403);
+
+        if($request->input('password') == $request->input('repeat_password'))
+        {
+            $user->password = Hash::make($request->input('password'));
+            $user->save();
+        }
+        else 
+            return back()->with('error', 'Fallo en cambiar contraseña');
+
+        return redirect(route('user'))->with('success', 'Contraseña editada');
+    }
+
     public function create_assistance(User $user)
     {
         if (Gate::allows('manage-assistance') || Gate::allows('manage-owner', $user))

@@ -26,7 +26,7 @@
                                     	@foreach($comments as $comment)
                                         <tr>
                                             <td>{{ $comment->created_at }}</td>
-                                            <td>{{ $comment->teacher->lastname . ' ' . $comment->teacher->name }}</td>
+                                            <td>{{ $comment->user->lastname . ' ' . $comment->user->name }}</td>
                                             <td>{{ $comment->text_comment }}</td>
                                             <td></td>
                                         </tr>

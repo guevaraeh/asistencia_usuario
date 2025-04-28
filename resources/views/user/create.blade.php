@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-<title>Crear Profesor</title>
+<title>Crear Docente</title>
 @endsection
 
 @section('content')

@@ -19,7 +19,7 @@ class CommentController extends Controller
         {
 
         }*/
-        return view('comment.index',['comments' => Comment::orderBy('id','desc')->get()]);
+        return view('comment.index',['comments' => Comment::orderBy('id','desc')->limit(100)->get()]);
     }
 
     public function destroy(Comment $comment)

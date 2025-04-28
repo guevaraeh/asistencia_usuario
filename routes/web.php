@@ -26,6 +26,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
     Route::get('/user/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
     Route::put('/user/{user}/update', [UserController::class, 'update'])->name('user.update');
+    Route::put('/user/{user}/update-password', [UserController::class, 'update_password'])->name('user.update_password');
     Route::get('/user/{user}', [UserController::class, 'show'])->name('user.show');
     Route::get('/assistanceteacher/{user}/create', [UserController::class, 'create_assistance'])->name('user.create_assistance');
     Route::get('/teacher-submitted/{user}', [UserController::class, 'submitted'])->name('user.submitted');
